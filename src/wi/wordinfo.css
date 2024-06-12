@@ -1,0 +1,84 @@
+.tooltip {
+  position: top;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.insertCount {
+  background-color: teal;
+  color: white;
+  border-radius: 100%;
+  text-align: center;
+  width: 20px;
+}
+.insertCountSpacer {
+  width: 20px;
+}
+.swapCount {
+  background-color: cornflowerblue;
+  color: darkblue;
+  border-radius: 100%;
+  /* border-left: 5px solid darkgray;
+  border-right: 5px solid darkgray; */
+  text-align: center;
+}
+.anagramCount {
+  background-color: slategray;
+  color: lightgreen;
+  border-radius: 100%;
+  text-align: center;
+  border-left: 5px solid slategray;
+  border-right: 5px solid slategray;
+}
+.dropRow {
+  line-height: 5px;
+}
+.dropIndicator {
+  color: black !important;
+  text-align: left;
+  padding-left: 2px;
+  padding-bottom: 2px;
+  vertical-align: top;
+  font-weight: bolder;
+  font-size: x-large;
+}
+.balloonstring {
+  text-align: center;
+  vertical-align: top;
+  color: white;
+  transform: rotate(90deg);  
+}
+.closeme {
+  vertical-align: top;
+}
+.closemebutton {
+  border: none;
+  margin: auto;
+  color: red;
+  background-color: var(--trcssPageBG);
+}
+.closemebutton::before {
+  content: '\22A0'; /* X in a box */
+}
+.extension {
+  color: red;
+}
