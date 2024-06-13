@@ -42,14 +42,10 @@ export default function Showinfo( props ) {
                     </tr>
                     </tbody>
             </table>
-            <table>
-                <tbody>
-                    {info.fexLen2 && info.fexLen2.length > 0 && displayFrontExtensions("fex2." + props.word,info.fexLen2)}
-                    {info.fexLen3 && info.fexLen3.length > 0 && displayFrontExtensions("fex3." + props.word,info.fexLen3)}
-                    {info.bexLen2 && info.bexLen2.length > 0 && displayBackExtensions("bex2." + props.word,info.bexLen2)}
-                    {info.bexLen3 && info.bexLen3.length > 0 && displayBackExtensions("bex3." + props.word,info.bexLen3)}
-                </tbody>
-            </table>
+            {info.fexLen2 && info.fexLen2.length > 0 && displayFrontExtensions("fex2." + props.word,info.fexLen2)}
+            {info.fexLen3 && info.fexLen3.length > 0 && displayFrontExtensions("fex3." + props.word,info.fexLen3)}
+            {info.bexLen2 && info.bexLen2.length > 0 && displayBackExtensions("bex2." + props.word,info.bexLen2)}
+            {info.bexLen3 && info.bexLen3.length > 0 && displayBackExtensions("bex3." + props.word,info.bexLen3)}
             </>
         :
             <div className="trEmphasis">Loading ...</div>
@@ -135,24 +131,24 @@ export default function Showinfo( props ) {
 
     function displayFrontExtensions(fkey, fex) {
         return (
-        <tr key={fkey}>
+        <div key={fkey} className='extRow'>
             {fex.map(fe => (
-                <td key={fe}>
+                <span key={fe} className='extCol'>
                     <span className='extension'>{fe}</span>{props.word}
-                </td>
+                </span>
             ))}
-        </tr>
+        </div>
         )
     }
     function displayBackExtensions(bkey, bex) {
         return (
-        <tr key={bkey}>
+        <div key={bkey} className='extRow'>
             {bex.map(be => (
-                <td key={be}>
+                <span key={be} className='extCol'>
                     {props.word}<span className='extension'>{be}</span>
-                </td>
+                </span>
             ))}
-        </tr>
+        </div>
         )
     }
 }

@@ -1,28 +1,3 @@
-.tooltip {
-  position: top;
-  display: inline-block;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -60%;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-}
 .insertCount {
   background-color: teal;
   color: white;
@@ -37,8 +12,6 @@
   background-color: cornflowerblue;
   color: darkblue;
   border-radius: 100%;
-  /* border-left: 5px solid darkgray;
-  border-right: 5px solid darkgray; */
   text-align: center;
 }
 .anagramCount {
@@ -78,6 +51,15 @@
 }
 .closemebutton::before {
   content: '\22A0'; /* X in a box */
+}
+.extRow {
+  border: 1px solid grey;
+}
+.extCol {
+  display: inline-block;
+  word-wrap: normal;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .extension {
   color: red;
