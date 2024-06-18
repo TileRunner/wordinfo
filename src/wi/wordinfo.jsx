@@ -10,6 +10,15 @@ const WordInfo = () => {
         newwords.splice(index,1);
         setWords(newwords);
     }
+    function acceptWord() {
+        setWords([word, ...words]);
+        setWord('');
+    }
+    const handleKeyDown = event => {
+        if (event.key === 'Enter') {
+            acceptWord();
+        }
+    }
     return (
         <div className="trBackground">
             <div className="trTitle">
@@ -23,14 +32,12 @@ const WordInfo = () => {
                     onChange={(e) => {
                         setWord(e.target.value)
                     }}
+                    onKeyDown={handleKeyDown}
                 />
                 <label>&nbsp;</label>
                 <button id="acceptWord"
                     className="trButton"
-                    onClick={function() {
-                        setWords([word, ...words]);
-                        setWord('');
-                    }}
+                    onClick={() => acceptWord()}
                 >
                     Get Word Info
                 </button>
