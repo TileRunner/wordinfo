@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Showinfo from './showinfo';
 import './wordinfo.css';
 
 const WordInfo = () => {
+    const inputRef = useRef(null);
     const [word, setWord] = useState('');
     const [words, setWords] = useState([]);
+    useEffect(() => {
+        inputRef.current.focus();
+    },[]);
     function removeEntry(index) {
         let newwords = JSON.parse(JSON.stringify(words)); // This deals with any depth issues using [...words]
         newwords.splice(index,1);
@@ -28,6 +32,7 @@ const WordInfo = () => {
                 <label>Word:&nbsp;</label>
                 <input
                     name="word"
+                    ref={inputRef}
                     value={word}
                     onChange={(e) => {
                         setWord(e.target.value)

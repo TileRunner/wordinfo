@@ -8,8 +8,8 @@ export default function Showinfo( props ) {
     const [loaded, setLoaded] = useState(false)
     useEffect(()=>{
         const apiCall = async ()=>{
-            let url = (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') ? 'https://localhost:55557/api/Values/NWL2023/info?word=' : 'https://webappscrabbleclub.azurewebsites.net/api/Values/NWL2023/info?word='
-            //let url = 'https://webappscrabbleclub.azurewebsites.net/api/Values/NWL2023/info?word='
+            //let url = (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') ? 'https://localhost:55557/api/Values/NWL2023/info?word=' : 'https://webappscrabbleclub.azurewebsites.net/api/Values/NWL2023/info?word='
+            let url = 'https://webappscrabbleclub.azurewebsites.net/api/Values/NWL2023/info?word='
             let fullurl = url + props.word
             console.log(fullurl);
             let response = await fetch(url + props.word)
