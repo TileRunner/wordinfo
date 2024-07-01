@@ -25,9 +25,7 @@ const WordInfo = () => {
     }
     return (
         <div className="trBackground">
-            <div className="trTitle">
-                Word Info
-            </div>
+            <h3>NWL2023 lexicon used with permission from NASPA <a href='https://www.scrabbleplayers.org/landing/tilerunner'>Visit NASPA</a></h3>
             <div className="trParagraph">
                 <label>Word:&nbsp;</label>
                 <input
@@ -50,7 +48,7 @@ const WordInfo = () => {
             </div>
             {words.map((w,wi) => (
                 w === '' ? <></> :
-                <Showinfo key={`${words.length - wi}.${w}`} word={w} showInserts="Y" showSwaps="Y" showAnagrams="Y" showDrops="Y" removeEntry={removeEntry} entryIndex={wi}/>
+                <Showinfo key={`${words.length - wi}.${w}`} word={w} removeEntry={removeEntry} entryIndex={wi}/>
             ))}
         </div>
         );

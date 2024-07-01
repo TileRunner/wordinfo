@@ -29,10 +29,10 @@ export default function Showinfo( props ) {
                         <td>
                             <table className="trTable">
                                 <tbody>
-                                    {props.showInserts === "Y" && info.inserts.length > 0 && displayInsertsRow(info.inserts)}
-                                    {props.showSwaps === "Y" && info.swaps.length > 0 && displaySwapsRow(info.swaps)}
+                                    {info.inserts.length > 0 && displayInsertsRow(info.inserts)}
+                                    {info.swaps.length > 0 && displaySwapsRow(info.swaps)}
                                     {displayWordRow()}
-                                    {props.showDrops === "Y" && info.drops.length > 0 && displayDropsRow(info.drops)}
+                                    {info.drops.length > 0 && displayDropsRow(info.drops)}
                                 </tbody>
                             </table>
                         </td>
@@ -46,6 +46,7 @@ export default function Showinfo( props ) {
             {info.fexLen3 && info.fexLen3.length > 0 && displayFrontExtensions("fex3." + props.word,info.fexLen3)}
             {info.bexLen2 && info.bexLen2.length > 0 && displayBackExtensions("bex2." + props.word,info.bexLen2)}
             {info.bexLen3 && info.bexLen3.length > 0 && displayBackExtensions("bex3." + props.word,info.bexLen3)}
+            {info.stemLetters && info.stemLetters.length > 0 && displayStemLetters(info.stemLetters)}
             </>
         :
             <div className="trEmphasis">Loading ...</div>
@@ -149,6 +150,13 @@ export default function Showinfo( props ) {
                 </span>
             ))}
         </div>
+        )
+    }
+    function displayStemLetters(stemLetters) {
+        return (
+            <div className='stemLetters' data-toggle="tooltip" title="Letters you can add and be able to make another word">
+                {stemLetters}
+            </div>
         )
     }
 }

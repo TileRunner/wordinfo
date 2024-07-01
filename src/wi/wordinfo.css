@@ -64,3 +64,18 @@
 .extension {
   color: red;
 }
+.stemLetters::before {
+  content: 'Stem Letters:';
+  text-transform: capitalize;
+  margin: 5px;
+  background-color: yellow;
+  color: black;
+  letter-spacing: normal;
+}
+.stemLetters {
+  text-transform: uppercase;
+  border: 1px solid grey;
+  letter-spacing: 3px;
+  background-color: black;
+  color: yellow;
+}
