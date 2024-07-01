@@ -98,7 +98,7 @@ export default function Showinfo( props ) {
                     </>
                 ))}
                 <td key={key1}>
-                {props.showAnagrams === "Y" && info.anagrams.length > 0 &&
+                {info.anagrams && info.anagrams.length > 0 &&
                     <span key={info.anagrams}>
                         <ShowAnagramsForOneWord anagrams={info.anagrams}></ShowAnagramsForOneWord>
                     </span>
