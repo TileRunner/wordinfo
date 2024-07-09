@@ -44,7 +44,6 @@ const WordInfo = () => {
                 >
                     Get Word Info
                 </button>
-                <label>&nbsp;</label>
             </div>
             {words.map((w,wi) => (
                 w === '' ? <></> :

@@ -21,6 +21,72 @@ export default function Showinfo( props ) {
         apiCall()
     },[])
 
+    function copyToClipboard() {
+        let w = props.word.toUpperCase();
+        let copyText = "";
+        copyText += `\r\n${w} ${info.exists ? 'is valid' : '* is NOT valid'}`;
+        copyText += `\r\nStem Letters: ${info.stemLetters.toUpperCase()}`;
+        copyText += "\r\nInserts:";
+        for (let i = 0; i < info.inserts.length; i++) {
+            if (info.inserts[i] !== "") {
+                let part1 = i === 0 ? "" : w.substring(0, i);
+                let part2 = `[${info.inserts[i].toUpperCase().split("").join(",")}]`;
+                let part3 = i === w.length ? "" : w.substring(i);
+                copyText += `\r\n\t${part1}${part2}${part3}`;
+            }
+        }
+        copyText += "\r\nSwaps:";
+        for (let i = 0; i < info.swaps.length; i++) {
+            if (info.swaps[i] !== "") {
+                let part1 = i === 0 ? "" : w.substring(0, i);
+                let part2 = `[${info.swaps[i].toUpperCase().split("").join(",")}]`;
+                let part3 = i === w.length - 1 ? "" : w.substring(i + 1);
+                copyText += `\r\n\t${part1}${part2}${part3}`;
+            }
+        }
+        copyText += "\r\nDrops:";
+        for (let i = 0; i < info.drops.length; i++) {
+            if (info.drops[i] === "Y") {
+                let part1 = i === 0 ? "" : w.substring(0, i);
+                let part2 = "";
+                let part3 = i === w.length - 1 ? "" : w.substring(i + 1);
+                copyText += `\r\n\t${part1}${part2}${part3}`;
+            }
+        }
+        if (info.anagrams.length > 0) {
+            copyText += "\r\nAnagrams:";
+            for (let i = 0; i < info.anagrams.length; i++) {
+                copyText += `\r\n\t${info.anagrams[i].toUpperCase()}`;
+            }
+        }
+        if (info.fexLen2.length > 0) {
+            copyText += "\r\nFront extensions, 2 letters:";
+            for (let i = 0; i < info.fexLen2.length; i++) {
+                copyText += `\r\n\t${info.fexLen2[i].toUpperCase()}${w}`;
+            }
+        }
+        if (info.fexLen3.length > 0) {
+            copyText += "\r\nFront extensions, 3 letters:";
+            for (let i = 0; i < info.fexLen3.length; i++) {
+                copyText += `\r\n\t${info.fexLen3[i].toUpperCase()}${w}`;
+            }
+        }
+        if (info.bexLen2.length > 0) {
+            copyText += "\r\nBack extensions, 2 letters:";
+            for (let i = 0; i < info.bexLen2.length; i++) {
+                copyText += `\r\n\t${w}${info.bexLen2[i].toUpperCase()}`;
+            }
+        }
+        if (info.bexLen3.length > 0) {
+            copyText += "\r\nBack extensions, 3 letters:";
+            for (let i = 0; i < info.bexLen3.length; i++) {
+                copyText += `\r\n\t${w}${info.bexLen3[i].toUpperCase()}`;
+            }
+        }
+        navigator.clipboard.writeText(copyText);
+        alert("Copied!");
+    }
+
     return (
         loaded ? <>
             <table>
@@ -38,6 +104,15 @@ export default function Showinfo( props ) {
                         </td>
                         {props.entryIndex > -1 && <td className="closeme">
                             <button className="closemebutton" onClick={() => props.removeEntry(props.entryIndex)}></button>
+                        </td>}
+                        {props.entryIndex > -1 && <td>
+                            <button
+                                className='trButton'
+                                onClick={() => copyToClipboard()}
+                                data-toggle="tooltip" title="Copy info to clipboard"
+                            >
+                                Clip
+                            </button>
                         </td>}
                     </tr>
                     </tbody>
